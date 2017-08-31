@@ -1,0 +1,24 @@
+DeviceBundle\Entity\Device:
+    type: entity
+    table: null
+    repositoryClass: DeviceBundle\Repository\DeviceRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        userId:
+            type: integer
+            column: user_id
+        devicetypeId:
+            type: integer
+            column: devicetype_id
+        icon:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

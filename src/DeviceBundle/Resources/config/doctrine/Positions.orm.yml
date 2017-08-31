@@ -1,0 +1,27 @@
+DeviceBundle\Entity\Positions:
+    type: entity
+    table: null
+    repositoryClass: DeviceBundle\Repository\PositionsRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        utctime:
+            type: datetime
+        deviceId:
+            type: integer
+            column: device_id
+        latitude:
+            type: float
+        longitude:
+            type: float
+        address:
+            type: string
+            length: 255
+        state:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

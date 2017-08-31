@@ -1,0 +1,41 @@
+UserBundle\Entity\Users:
+    type: entity
+    table: null
+    repositoryClass: UserBundle\Repository\UsersRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        firstname:
+            type: string
+            length: 255
+        lastname:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        address:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: 255
+        login:
+            type: string
+            length: 255
+        companyname:
+            type: string
+            length: 255
+        timezone:
+            type: string
+            length: 255
+        admin:
+            type: boolean
+        language:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

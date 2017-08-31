@@ -1,0 +1,23 @@
+user_users:
+    resource: "@UserBundle/Resources/config/routing/users.yml"
+    prefix:   /users
+
+user_homepage:
+    path:     /user/{name}/{index}
+    defaults: { _controller: UserBundle:Default:index }
+
+user_live:
+    path:     /user/live
+    defaults: { _controller: UserBundle:Default:live }
+    
+login_form:
+    path:     /login
+    defaults: { _controller: UserBundle:Auth:login }
+
+login_check:
+    path:     /login_check
+    defaults: { _controller: UserBundle:Auth:loginCheck }
+    
+logout:
+    path:     /logout
+    defaults: { _controller: UserBundle:Auth:logout }    

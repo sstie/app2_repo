@@ -1,0 +1,11 @@
+device_device:
+    resource: "@DeviceBundle/Resources/config/routing/device.yml"
+    prefix:   /device
+
+#device_homepage:
+#    path:     /device
+#    defaults: { _controller: DeviceBundle:Default:index }
+
+device_positions_list:
+    path: /device/positions/{device_id}/{from_utctime}/{to_utctime}/{limit}
+    defaults: { _controller: DeviceBundle:Positions:list, from_utctime: null,to_utctime: null, limit: 5 }

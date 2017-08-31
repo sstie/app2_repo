@@ -5,8 +5,17 @@ security:
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
-
+            memory: 
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+        
+        our_db_provider:
+            entity:
+                class: UserBundle:Users
+                property: login
+                
+                
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
@@ -18,7 +27,27 @@ security:
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+            http_basic: ~
+            provider: our_db_provider
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~
+        #secured_area:
+            pattern:    ^/
+            form_login:
+                check_path: login_check
+                login_path: login_form
+                
+            logout:
+                    path:   logout # a route called logout
+                    target: login_form           
+                
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        FOS\UserBundle\Model\UserInterface: sha512
+        UserBundle\Entity\Users:
+            algorithm: bcrypt
+            
+    access_control:
+        - { path: ^/user, roles: ROLE_USER }        
+        - { path: ^/device, roles: ROLE_ADMIN }  
